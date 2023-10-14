@@ -18,12 +18,14 @@ body {
 
 .grid {
     display: grid;
-    width: 100%;
-    height: 100%;
+    column-gap: 6rem;
+    min-height: calc(100% - 8rem);
     position: relative;
     color: white;
     background-color: rgba(0, 0, 0, 0.25);
     padding: 4rem 6rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
 }
 
 nav {
@@ -31,6 +33,7 @@ nav {
     grid-row: 1/3;
     opacity: 0;
     animation: fadeUp 0.5s ease forwards var(--start-delay);
+    letter-spacing: 0.2rem;
 }
 
 aside {
@@ -40,7 +43,23 @@ aside {
 
 main {
     grid-column: 1/4;
-    grid-row: 4/5;
+    grid-row: 2/5;
+    align-self: end;
+}
+
+main h3 {
+    font-size: 1.25rem;
+    opacity: 0;
+    animation: fadeDown 0.5s ease-out forwards var(--start-delay);
+}
+
+main .title {
+    letter-spacing: 5px;
+    display: flex;
+    overflow: hidden;
+    gap: 5px;
+    line-height: 8rem;
+    margin: 1rem 0 4rem 0;
 }
 
 .title .start {
@@ -58,21 +77,22 @@ main {
     opacity: 0;
     animation: fadeUpTitle 0.6s ease-out forwards calc(var(--start-delay) + 0.25s);
     -webkit-text-stroke: 1px white;
+    align-self: flex-end;
 }
 
-main .title {
-    letter-spacing: 5px;
-    display: flex;
-    overflow: hidden;
-    gap: 5px;
-    line-height: 8rem;
-    margin: 2rem 0;
+@media only screen and (max-width: 1500px) {
+    .grid {
+        padding: 4rem 4rem;
+    }
+    .title .start {
+        width: min-content;
+    }
 }
 
-main h3 {
-    font-size: 1.25rem;
-    opacity: 0;
-    animation: fadeDown 0.5s ease-out forwards var(--start-delay);
+@media only screen and (max-width: 1250px) {
+    main .title {
+        flex-wrap: wrap;
+    }
 }
 
 .buttons {
@@ -114,10 +134,10 @@ div.primary::before {
     animation-delay: var(--start-delay);
 }
 
-div.primary > div {
+div.button > div {
     opacity: 0;
     animation: slideInText 1s ease forwards;
-    animation-delay: calc(var(--start-delay) + 0.6s);
+    animation-delay: calc(var(--start-delay) + 0.75s);
 }
 
 div.secondary {
@@ -134,14 +154,8 @@ div.secondary::before {
     left: 0;
     width: 0;
     box-shadow: inset 0 0 0 3px white;
-    animation: grow 1s ease forwards;
+    animation: grow 0.5s ease-out forwards;
     animation-delay: calc(var(--start-delay) + 0.2s);
-}
-
-div.secondary > div {
-    opacity: 0;
-    animation: slideInText 1s ease forwards;
-    animation-delay: calc(var(--start-delay) + 0.6s);
 }
 
 h1 {
@@ -155,31 +169,241 @@ h3 {
     font-weight: 400;
 }
 
+h3 p {
+    display: inline;
+    color: #a7a7a7;
+}
+
 h4 {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-family: 'Figtree', sans-serif;
     font-weight: 400;
+    margin: 0;
+}
+
+h5 {
+    margin: 0;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 300;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar .sidebar--header {
+    display: grid;
+    column-gap: 1rem;
+    width: max-content;
+}
+
+img.profile {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    object-position: top right;
+    border-radius: 50%;
+}
+
+.sidebar .sidebar--header img.profile {
+    grid-row: 1/3;
+    grid-column: 1/1;
+    opacity: 0;
+    animation: popOut 0.3s ease forwards;
+    animation-delay: var(--start-delay);
 }
 
 .director,
 .director--sub {
     font-family: 'Raleway', sans-serif;
+    align-self: center;
+    opacity: 0;
+}
+
+.sidebar .sidebar--header .director {
+    grid-row: 1/1;
+    grid-column: 2/2;
+    letter-spacing: 0.2rem;
+    font-weight: 400;
+    animation: fadeUp 0.3s ease forwards;
+    animation-delay: calc(var(--start-delay) + 0.2s);
+}
+
+.sidebar .sidebar--header .director--sub {
+    grid-row: 2/2;
+    grid-column: 2/2;
+    animation: fadeUp 0.3s ease forwards;
+    animation-delay: calc(var(--start-delay) + 0.4s);
+}
+
+.episodes h4 {
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    color: rgb(190, 190, 190);
+    opacity: 0;
+    animation: fadeUp 0.3s ease forwards;
+    animation-delay: var(--start-delay);
+}
+
+.episodes ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-block: 1rem;
+    list-style-type: none;
+}
+
+.episode {
+    --episode-start-delay: calc(var(--start-delay) + 0.1s);
+    position: relative;
+    width: 100%;
+    height: 9rem;
+    opacity: 0;
+    animation: fadeUpEpisode 0.5s ease-out forwards;
+}
+
+.episode:nth-child(1) {
+    animation-delay: calc(var(--episode-start-delay) + 0.3s);
+}
+.episode:nth-child(2) {
+    animation-delay: calc(var(--episode-start-delay) + 0.5s);
+}
+.episode:nth-child(3) {
+    animation-delay: calc(var(--episode-start-delay) + 0.7s);
+}
+
+.episode:nth-child(1) .episode--overlay .play {
+    animation-delay: calc(var(--episode-start-delay) + 0.6s);
+}
+.episode:nth-child(2) .episode--overlay .play {
+    animation-delay: calc(var(--episode-start-delay) + 0.8s);
+}
+.episode:nth-child(3) .episode--overlay .play {
+    animation-delay: calc(var(--episode-start-delay) + 1s);
+}
+
+.episode:nth-child(1) .episode--overlay p {
+    animation-delay: calc(var(--episode-start-delay) + 0.7s);
+}
+.episode:nth-child(2) .episode--overlay p {
+    animation-delay: calc(var(--episode-start-delay) + 0.9s);
+}
+.episode:nth-child(3) .episode--overlay p {
+    animation-delay: calc(var(--episode-start-delay) + 1.1s);
+}
+
+.episode > img {
+    position: relative;
+    width: 100%;
+    height: 9rem;
+    object-fit: cover;
+}
+
+.episode .episode--overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.episode .play {
+    width: 4rem;
+    height: 4rem;
+    animation: fadeUpEpisodePlay 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.episode p {
+    margin: 0.5rem;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 300;
+    font-size: 0.6rem;
+    letter-spacing: 0.1rem;
+    animation: fadeUpEpisodePlay 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.sidebar footer ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-self: flex-end;
+    justify-content: center;
+    gap: 3rem;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 300;
+}
+
+.sidebar footer ul li {
+    opacity: 0;
+    animation: fadeUp 0.3s ease-out forwards;
+}
+
+.sidebar footer ul li:nth-child(1) {
+    animation-delay: var(--start-delay);
+}
+.sidebar footer ul li:nth-child(2) {
+    animation-delay: calc(var(--start-delay) + 0.2s);
+}
+.sidebar footer ul li:nth-child(3) {
+    animation-delay: calc(var(--start-delay) + 0.4s);
+}
+
+@media only screen and (max-width: 1700px) {
+    .sidebar footer ul {
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
 }
 
 @keyframes zoomOut {
     0% {
         scale: 1.4;
-        translate: -5% 10%;
+        translate: -2.5% 10%;
     }
     100% {
-        scale: 1.1;
-        translate: -5% 0;
+        scale: 1.05;
+        translate: -2.5% 0;
     }
 }
 
 @keyframes fadeUp {
     0% {
         translate: 0 0.75rem;
+        opacity: 0%;
+    }
+    100% {
+        translate: 0;
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeUpEpisode {
+    0% {
+        translate: 0 2rem;
+        opacity: 0%;
+    }
+    100% {
+        translate: 0;
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeUpEpisodePlay {
+    0% {
+        translate: 0 1rem;
         opacity: 0%;
     }
     100% {
@@ -249,5 +473,16 @@ h4 {
     100% {
         width: 100%;
         height: 100%;
+    }
+}
+
+@keyframes popOut {
+    0% {
+        opacity: 0;
+        scale: 0;
+    }
+    100% {
+        opacity: 100%;
+        scale: 1;
     }
 }

@@ -1,44 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Movies</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@300;400&family=Raleway:wght@300;500&display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <img class="background" src="./images/background.jpeg"></img>
-        <div class="grid">
-            <nav class="header">
-                <h3>THE MANDALORIAN</h3>
-                <div class="menu"></div>
-            </nav>
-            <aside class="sidebar">
-                <div class="avatar"></div>
-                <h4 class="director">Jon Favreau</h4>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Movies</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@300;400&family=Raleway:wght@300;500&display=swap"
+    rel="stylesheet"
+    />
+</head>
+<body>
+    <img class="background" src="./images/background.jpeg"></img>
+    <div class="grid">
+        <nav class="header">
+            <h3><p>THE</p> MANDALORIAN</h3>
+        </nav>
+        <aside class="sidebar">
+            <div class="sidebar--header">
+                <img class="profile" src="./images/jon_faveau.jpg"></img>
+                <h4 class="director">JON FAVRAUE</h4>
                 <h5 class="director--sub">Director of the Mandalorian</h5>
-                <ul class="clips">
-                    <h4>// NUMBER OF EPISODE</h4>
+            </div>
+            <div class="episodes">
+                <h4>// EPISODES</h4>
+                <ul>
+                    <li class="episode">
+                        <img src="./images/episode_1.jpg"></img>
+                        <div class="episode--overlay">
+                            <img class="play" src="./images/play.svg"></img>
+                            <p>EPISODE #1</p>
+                        </div>
+                    </li>
+                    <li class="episode">
+                        <img src="./images/episode_2.jpg"></img>
+                        <div class="episode--overlay">
+                            <img class="play" src="./images/play.svg"></img>
+                            <p>EPISODE #2</p>
+                        </div>
+                    </li>
+                    <li class="episode">
+                        <img src="./images/episode_3.jpg"></img>
+                        <div class="episode--overlay">
+                            <img class="play" src="./images/play.svg"></img>
+                            <p>EPISODE #3</p>
+                        </div>
+                    </li>
                 </ul>
-            </aside>
-            <main>
-                <h3>COMING UP IN DECEMBER 24</h3>
-                <div class="title">
-                    <h1 class="start">THE MANDA</h1>
-                    <h1 class="end">LORIAN</h1>
-                </div>
-                <div class="buttons">
-                    <div class="primary"><div>WATCH ON DISNEY+</div></div>
-                    <div class="secondary"><div>WATCH THE TRAILER</div></div>
-                </div>
-            </main>
-        </div>
-    </body>
+            </div>
+            <footer>
+                <ul>
+                    <li>INSTAGRAM</li>
+                    <li>TWITTER</li>
+                    <li>FACEBOOK</li>
+                </ul>
+            </footer>
+        </aside>
+        <main>
+            <h3><p>COMING UP IN</p> DECEMBER 24</h3>
+            <div class="title">
+                <h1 class="start">THE MANDA</h1>
+                <h1 class="end">LORIAN</h1>
+            </div>
+            <div class="buttons">
+                <div class="button primary"><div>WATCH ON DISNEY+</div></div>
+                <div class="button secondary"><div>WATCH THE TRAILER</div></div>
+            </div>
+        </main>
+    </div>
+</body>
 </html>
