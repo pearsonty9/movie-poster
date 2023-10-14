@@ -1,0 +1,253 @@
+:root {
+    --start-delay: 0.5s;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    animation: zoomOut ease-out 7.5s forwards;
+    width: 100%;
+    object-fit: cover;
+}
+
+.grid {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 4rem 6rem;
+}
+
+nav {
+    grid-column: 1/4;
+    grid-row: 1/3;
+    opacity: 0;
+    animation: fadeUp 0.5s ease forwards var(--start-delay);
+}
+
+aside {
+    grid-column: 4/5;
+    grid-row: 1/5;
+}
+
+main {
+    grid-column: 1/4;
+    grid-row: 4/5;
+}
+
+.title .start {
+    translate: 0 -10rem;
+    font-family: 'Anton', sans-serif;
+    opacity: 0;
+    animation: fadeDownTitle 0.6s ease-out forwards calc(var(--start-delay) + 0.25s);
+}
+
+.title .end {
+    color: transparent;
+    letter-spacing: 5px;
+    translate: 0 10rem;
+    font-family: 'Anton', sans-serif;
+    opacity: 0;
+    animation: fadeUpTitle 0.6s ease-out forwards calc(var(--start-delay) + 0.25s);
+    -webkit-text-stroke: 1px white;
+}
+
+main .title {
+    letter-spacing: 5px;
+    display: flex;
+    overflow: hidden;
+    gap: 5px;
+    line-height: 8rem;
+    margin: 2rem 0;
+}
+
+main h3 {
+    font-size: 1.25rem;
+    opacity: 0;
+    animation: fadeDown 0.5s ease-out forwards var(--start-delay);
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+div.primary,
+div.secondary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    width: 18rem;
+    color: white;
+    font-family: 'Figtree', sans-serif;
+}
+
+div.primary {
+    height: 2rem;
+    width: 18rem;
+    overflow: hidden;
+    border: none;
+    padding: 1rem 0;
+    position: relative;
+}
+
+div.primary::before {
+    content: '';
+    position: absolute;
+    height: 2rem;
+    padding: 1rem 0;
+    top: 0;
+    left: 0;
+    background-color: #15161b;
+    border: none;
+    width: 0;
+    animation: slideIn 0.5s ease-out forwards;
+    animation-delay: var(--start-delay);
+}
+
+div.primary > div {
+    opacity: 0;
+    animation: slideInText 1s ease forwards;
+    animation-delay: calc(var(--start-delay) + 0.6s);
+}
+
+div.secondary {
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+div.secondary::before {
+    content: '';
+    position: absolute;
+    background-color: transparent;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    box-shadow: inset 0 0 0 3px white;
+    animation: grow 1s ease forwards;
+    animation-delay: calc(var(--start-delay) + 0.2s);
+}
+
+div.secondary > div {
+    opacity: 0;
+    animation: slideInText 1s ease forwards;
+    animation-delay: calc(var(--start-delay) + 0.6s);
+}
+
+h1 {
+    font-size: 8rem;
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 400;
+}
+
+h4 {
+    font-size: 1rem;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 400;
+}
+
+.director,
+.director--sub {
+    font-family: 'Raleway', sans-serif;
+}
+
+@keyframes zoomOut {
+    0% {
+        scale: 1.4;
+        translate: -5% 10%;
+    }
+    100% {
+        scale: 1.1;
+        translate: -5% 0;
+    }
+}
+
+@keyframes fadeUp {
+    0% {
+        translate: 0 0.75rem;
+        opacity: 0%;
+    }
+    100% {
+        translate: 0;
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeDown {
+    0% {
+        translate: 0 -2rem;
+        opacity: 0%;
+    }
+    100% {
+        translate: 0;
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeDownTitle {
+    0% {
+        translate: 0 -10rem;
+        opacity: 0%;
+    }
+    100% {
+        translate: 0;
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeUpTitle {
+    0% {
+        translate: 0 10rem;
+        opacity: 0%;
+    }
+    100% {
+        translate: 0;
+        opacity: 100%;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 18rem;
+    }
+}
+
+@keyframes slideInText {
+    0% {
+        translate: -40%;
+        opacity: 0;
+    }
+    100% {
+        margin: 0;
+        opacity: 100%;
+    }
+}
+
+@keyframes grow {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+    }
+}
